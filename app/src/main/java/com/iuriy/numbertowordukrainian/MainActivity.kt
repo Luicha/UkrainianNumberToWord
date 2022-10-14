@@ -62,7 +62,7 @@ fun TextInput() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.padding(PaddingValues(top = 56.dp)))
-        Title("123 to абв ")
+        Title("123 to абв")
         TextBar()
     }
 }
