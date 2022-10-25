@@ -70,7 +70,7 @@ fun TextInput() {
 @RequiresApi(Build.VERSION_CODES.N)
 @Composable
 fun TextBar() {
-    var textState by rememberSaveable() { mutableStateOf("") }
+    var textState by rememberSaveable() { mutableStateOf("0") }
     val maxChar = 15
     val focusManager = LocalFocusManager.current
     val ignoreSpecial = remember { Regex("^\\d+\$") }
@@ -82,9 +82,7 @@ fun TextBar() {
             .fillMaxWidth(),
         onValueChange = {
             if (it.length < maxChar) {
-                if (it.matches(ignoreSpecial)) {
                     textState = it
-                }
             }
         },
         maxLines = 1,
@@ -103,7 +101,7 @@ fun TextBar() {
             }
         },
     )
-    if (!textState.isEmpty()) {
+    if (!textState.isEmpty() && (textState.matches(Regex("^\\d+\$")))) {
         val num = textState.toLong()
         NumEnLetras(num)
     }
